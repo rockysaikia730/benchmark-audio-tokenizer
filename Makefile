@@ -93,6 +93,21 @@ cosyvoice2:
 	uv pip install --no-deps -r requirements-cosyvoice2-subdeps.txt && \
 	python -c "import torch; print(f'PyTorch Version: {torch.__version__}'); print(f'CUDA Available: {torch.cuda.is_available()}'); print(f'CUDA Version: {torch.version.cuda}'); import torchaudio; print(f'torchaudio Version: {torchaudio.__version__}')"
 
+hcodec:
+	mv .venv-hcodec .venv-hcodec-old || true
+	rm -rf .venv-hcodec-old &
+
+	uv venv .venv-hcodec --system-site-packages
+
+	uv pip compile requirements-hcodec-topdeps.txt -o requirements-hcodec-subdeps.txt
+	sed -i '/^torch==/d' requirements-hcodec-subdeps.txt
+	sed -i '/^torchaudio==/d' requirements-hcodec-subdeps.txt
+
+	source .venv-hcodec/bin/activate && \
+	uv pip install --no-deps --no-build-isolation git+https://github.com/pytorch/audio.git@release/2.6 && \
+	uv pip install --no-deps -r requirements-hcodec-subdeps.txt && \
+	python -c "import torch; print(f'PyTorch Version: {torch.__version__}'); print(f'CUDA Available: {torch.cuda.is_available()}'); print(f'CUDA Version: {torch.version.cuda}'); import torchaudio; print(f'torchaudio Version: {torchaudio.__version__}')"
+
 
 # # xcodec2 CPU-only torch
 # xcodec2:
