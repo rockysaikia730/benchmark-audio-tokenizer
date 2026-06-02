@@ -1,0 +1,7 @@
+funasr
+easydict
+descript-audio-codec
+pyyaml
+huggingface_hub
+transformers
+vector-quantize-pytorch

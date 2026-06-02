@@ -35,9 +35,3 @@
 [submodule "src/repos/MiMo-Audio"]
 	path = src/repos/MiMo-Audio
 	url = https://github.com/XiaomiMiMo/MiMo-Audio.git
-[submodule "src/repos/unified-audio"]
-	path = src/repos/unified-audio
-	url = https://github.com/alibaba/unified-audio.git
-[submodule "src/repos/unified-audio-masked"]
-	path = src/repos/unified-audio-masked
-	url = https://github.com/rockysaikia730/unified-audio-masked.git
